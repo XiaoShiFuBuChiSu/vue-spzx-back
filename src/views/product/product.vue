@@ -652,25 +652,35 @@ const saveOrUpdate = () => {
   if (!product.value.id) {
     saveData()
   } else {
+    debugger
     updateData()
   }
 }
 
 // 新增
 const saveData = async () => {
-  await SaveProduct(product.value)
-  dialogVisible.value = false
-  ElMessage.success('操作成功')
-  fetchData()
+  let { code, message } = await SaveProduct(product.value)
+  if (code == 200) {
+    dialogVisible.value = false
+    ElMessage.success('操作成功')
+    fetchData()
+  } else {
+    ElMessage.error(message)
+  }
 }
 
 // 修改
 const updateData = async () => {
+  debugger
   console.log(product.value)
-  await UpdateProductById(product.value)
-  dialogVisible.value = false
-  ElMessage.success('操作成功')
-  fetchData()
+  let { code, message } = await UpdateProductById(product.value)
+  if (code == 200) {
+    dialogVisible.value = false
+    ElMessage.success('操作成功')
+    fetchData()
+  } else {
+    ElMessage.error(message)
+  }
 }
 
 // 展示选择的规则数据

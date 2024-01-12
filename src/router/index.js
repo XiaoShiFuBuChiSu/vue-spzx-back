@@ -36,12 +36,13 @@ import test from './modules/test'
 import system from './modules/system'
 import product from './modules/product'
 import basicData from './modules/basicData'
+import order from './modules/order'
 
 /* 菜单栏的路由 */
 // 固定菜单
 export const fixedRoutes = [...home]
 // 动态菜单
-export const asyncRoutes = [...system, ...product, ...basicData]
+export const asyncRoutes = [...system, ...product, ...basicData, ...order]
 
 const router = createRouter({
   history: createWebHashHistory(),
